@@ -34,10 +34,10 @@ public class PostDao {
     }
 
     // 게시글 목록
-    public List<PostDto> list(int offset, int pageSize, String searchType, String searchKeyword) {
+    public List<PostDto> list(int offset, int listCountPerPage, String searchType, String searchKeyword) {
         Map<String, Object> params = new HashMap<>();
         params.put("offset", offset);
-        params.put("pageSize", pageSize);
+        params.put("listCountPerPage", listCountPerPage);
         params.put("searchType", searchType);
         params.put("searchKeyword", searchKeyword);
 

@@ -28,15 +28,15 @@ public class PostService {
     }
 
     // 게시글 목록
-    public Map<String, Object> list(int page, int pageSize, String searchType, String searchKeyword) {
+    public Map<String, Object> list(int currentPage, int listCountPerPage, int pageCountPerPage, String searchType, String searchKeyword) {
         // 전체 게시글 수 조회
         int totalCount = postDao.totalCount(searchType, searchKeyword);
 
         // 페이지네이션 정보 생성
-        Pagination pagination = new Pagination(page, pageSize, totalCount);
+        Pagination pagination = new Pagination(currentPage, listCountPerPage, pageCountPerPage, totalCount);
 
         // 페이징된 게시글 목록 조회
-        List<PostDto> postsVoList = postDao.list(pagination.offset(), pageSize, searchType, searchKeyword);
+        List<PostDto> postsVoList = postDao.list(pagination.offset(), listCountPerPage, searchType, searchKeyword);
 
         // 결과 맵 생성
         Map<String, Object> result = new HashMap<>();

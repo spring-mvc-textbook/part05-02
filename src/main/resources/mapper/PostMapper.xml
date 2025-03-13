@@ -75,7 +75,7 @@
         </if>
         <![CDATA[
         ORDER BY ID DESC
-        LIMIT #{offset}, #{pageSize}
+        LIMIT #{offset}, #{listCountPerPage}
         ]]>
     </select>
 

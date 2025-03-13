@@ -68,28 +68,28 @@
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 <%-- 이전 페이지 --%>
-                <c:if test="${pagination.page > 1}">
+                <c:if test="${pagination.currentPage > 1}">
                     <li class="page-item">
                         <a class="page-link" href="/posts?page=1">처음</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="/posts?page=${pagination.page - 1}">이전</a>
+                        <a class="page-link" href="/posts?page=${pagination.currentPage - 1}">이전</a>
                     </li>
                 </c:if>
                 <%--// 이전 페이지 --%>
 
                 <%-- 페이지 리스트 --%>
-                <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="pageNum">
-                    <li class="page-item ${pagination.page == pageNum ? 'active' : ''}">
-                        <a class="page-link" href="/posts?page=${pageNum}">${pageNum}</a>
+                <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="pageNumber">
+                    <li class="page-item ${pagination.currentPage == pageNumber ? 'active' : ''}">
+                        <a class="page-link" href="/posts?page=${pageNumber}">${pageNumber}</a>
                     </li>
                 </c:forEach>
                 <%--// 페이지 리스트 --%>
 
                 <%-- 다음 페이지 --%>
-                <c:if test="${pagination.page < pagination.totalPages}">
+                <c:if test="${pagination.currentPage < pagination.totalPages}">
                     <li class="page-item">
-                        <a class="page-link" href="/posts?page=${pagination.page + 1}">다음</a>
+                        <a class="page-link" href="/posts?page=${pagination.currentPage + 1}">다음</a>
                     </li>
                     <li class="page-item">
                         <a class="page-link" href="/posts?page=${pagination.totalPages}">마지막</a>

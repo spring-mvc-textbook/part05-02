@@ -42,13 +42,14 @@ public class PostController {
     // 게시글 목록 (화면, GET)
     @GetMapping("")
     public String listGet(
-        @RequestParam(value = "page", defaultValue = "1") int page, 
+        @RequestParam(value = "page", defaultValue = "1") int currentPage, 
         @RequestParam(required = false) String searchType,
         @RequestParam(required = false) String searchKeyword,
         Model model
     ) {
-        int pageSize = 10; // 페이지당 게시글 수
-        Map<String, Object> result = postService.list(page, pageSize, searchType, searchKeyword);
+        int listCountPerPage = 10;  // 한 페이지에서 불러올 게시글 수
+        int pageCountPerPage = 5;   // 한 페이지에서 보여질 페이지 수
+        Map<String, Object> result = postService.list(currentPage, listCountPerPage, pageCountPerPage, searchType, searchKeyword);
         model.addAttribute("postsVoList", result.get("postsVoList"));
         model.addAttribute("pagination", result.get("pagination"));
         model.addAttribute("searchType", result.get("searchType"));
