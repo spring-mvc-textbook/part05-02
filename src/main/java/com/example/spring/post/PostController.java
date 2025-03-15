@@ -50,7 +50,7 @@ public class PostController {
         int listCountPerPage = 10;  // 한 페이지에서 불러올 게시글 수
         int pageCountPerPage = 5;   // 한 페이지에서 보여질 페이지 수
         Map<String, Object> result = postService.list(currentPage, listCountPerPage, pageCountPerPage, searchType, searchKeyword);
-        model.addAttribute("postsVoList", result.get("postsVoList"));
+        model.addAttribute("posts", result.get("posts"));
         model.addAttribute("pagination", result.get("pagination"));
         model.addAttribute("searchType", result.get("searchType"));
         model.addAttribute("searchKeyword", result.get("searchKeyword"));

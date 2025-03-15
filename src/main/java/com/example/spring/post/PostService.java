@@ -36,11 +36,11 @@ public class PostService {
         Pagination pagination = new Pagination(currentPage, listCountPerPage, pageCountPerPage, totalCount);
 
         // 페이징된 게시글 목록 조회
-        List<PostDto> postsVoList = postDao.list(pagination.offset(), listCountPerPage, searchType, searchKeyword);
+        List<PostDto> posts = postDao.list(pagination.offset(), listCountPerPage, searchType, searchKeyword);
 
         // 결과 맵 생성
         Map<String, Object> result = new HashMap<>();
-        result.put("postsVoList", postsVoList);
+        result.put("posts", posts);
         result.put("pagination", pagination);
         result.put("searchType", searchType);
         result.put("searchKeyword", searchKeyword);
